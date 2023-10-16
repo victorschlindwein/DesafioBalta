@@ -38,5 +38,14 @@ namespace DesafioBalta.Controllers
 
             return new { token };
         }
+
+        [HttpGet]
+        [Route("getAllUsers")]
+        public async Task<List<User>> GetAllUsers()
+        {
+            var user = UserRepository.Get();
+
+            return user;
+        }
     }
 }
