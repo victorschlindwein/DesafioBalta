@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Net.Mail;
 
 namespace DesafioBalta.Models
 {
@@ -8,5 +7,6 @@ namespace DesafioBalta.Models
         public int Id { get; set; }
         public required string Email { get; set; }
         public required string Senha {  get; set; }
+        public string AcessToken { get; set; };
     }
 }

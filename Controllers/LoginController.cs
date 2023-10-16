@@ -25,5 +25,18 @@ namespace DesafioBalta.Controllers
 
             return new { user, token };
         }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<ActionResult<dynamic>> CreateNewUser([FromBody] User model)
+        {
+            var user = UserRepository.Create(model.Senha, model.Email);
+            if (user == null)
+                return NotFound(new { message = "usuário ou senha inválidos" });
+
+            var token = TokenService.GenerateToken(user);
+
+            return new { token };
+        }
     }
 }

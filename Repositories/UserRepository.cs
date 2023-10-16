@@ -14,5 +14,10 @@ namespace DesafioBalta.Repositories
 
             return users.FirstOrDefault(x => x.Email == email && x.Senha == senha);
         }
+
+        public static User Create(string email, string senha)
+        {
+
+        }
     }
 }
