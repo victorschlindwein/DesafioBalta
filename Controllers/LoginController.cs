@@ -11,19 +11,27 @@ namespace DesafioBalta.Controllers
     public class LoginController : ControllerBase
     {
         [HttpPost]
-        [Route("login")]
-        public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] User model)
+        [Route("create")]
+        public async Task<ActionResult<dynamic>> CreateNewUser([FromBody] User model)
         {
-            var user = UserRepository.Get(model.Email, model.Senha);
-
+            var user = UserRepository.Create(model.Senha, model.Email);
             if (user == null)
                 return NotFound(new { message = "usuário ou senha inválidos" });
 
             var token = TokenService.GenerateToken(user);
 
-            user.Senha = "";
+            user.AcessToken = token;
 
-            return new { user, token };
+            return new { token };
+        }
+
+        [HttpGet]
+        [Route("getAllUsers")]
+        public async Task<List<User>> GetAllUsers()
+        {
+            var user = UserRepository.Get();
+
+            return user;
         }
     }
 }

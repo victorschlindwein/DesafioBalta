@@ -5,14 +5,20 @@ namespace DesafioBalta.Repositories
 { 
     public class UserRepository
     {
-        public static User Get(string email, string senha)
-        {
-            var users = new List<User>
-            {
-                new User { Id = 1, Email = "admin", Senha = "pwd123" }
-            };
 
-            return users.FirstOrDefault(x => x.Email == email && x.Senha == senha);
+        private static List<User> _user = new();
+
+        public static List<User> Get()
+        {
+            return _user;
+        }
+
+        public static User Create(string email, string senha)
+        {
+            var user = new User { Id = 1, Email = email, Senha = senha };
+            _user.Add(user);
+
+            return user;
         }
     }
 }
