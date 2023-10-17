@@ -35,6 +35,11 @@ public class UserService : IUserService
     public async Task<List<User>> GetAllAsync()
     {
         var users = await _context.Users.ToListAsync();
+            foreach (var user in users)
+            {
+                var token = TokenService.GenerateToken(user);
+                user.AcessToken = token;
+            }
         return users;
     }
 }
