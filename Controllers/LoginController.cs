@@ -24,16 +24,23 @@ namespace DesafioBalta.Controllers
             if (user == null)
                 return NotFound(new { message = "usuário ou senha inválidos" });
 
-            var token = TokenService.GenerateToken(user);
-
-            user.AcessToken = token;
-
             return Ok(user);
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login(User user)
+        {
+            var databaseUser = await _userService.LoginUserAsync(user);
+            if (databaseUser == null)
+                return NotFound(new { message = "usuário ou senha inválidos" });
+
+            return Ok(databaseUser);
         }
 
         [HttpGet]
         [Route("getAllUsers")]
-        public async Task<ActionResult> GetAllUsers()
+        public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userService.GetAllAsync();
 

@@ -1,6 +1,7 @@
 ﻿using DesafioBalta.Context;
 using DesafioBalta.Models;
-using System;
+using DesafioBalta.Services;
+using Microsoft.EntityFrameworkCore;
 
 public class UserService : IUserService
 {
@@ -14,11 +15,26 @@ public class UserService : IUserService
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
 
+        var token = TokenService.GenerateToken(user);
+
+        user.AcessToken = token;
+
         return user;
     }
 
-    public Task<User> GetAllAsync()
+    public async Task<User> LoginUserAsync(User user)
     {
-        throw new NotImplementedException();
+        var databaseUser = await _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email) && x.Password.Equals(user.Password));
+        
+        var token = TokenService.GenerateToken(databaseUser);
+        databaseUser.AcessToken = token;
+
+        return databaseUser;
+    }
+
+    public async Task<List<User>> GetAllAsync()
+    {
+        var users = await _context.Users.ToListAsync();
+        return users;
     }
 }
