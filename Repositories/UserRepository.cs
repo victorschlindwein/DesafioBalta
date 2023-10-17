@@ -1,24 +1,17 @@
-﻿using DesafioBalta.Models;
+﻿using DesafioBalta.Context;
+using DesafioBalta.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace DesafioBalta.Repositories 
 { 
     public class UserRepository
     {
+        private readonly ApiContext _context;
 
-        private static List<User> _user = new();
-
-        public static List<User> Get()
+        public UserRepository(ApiContext context)
         {
-            return _user;
-        }
-
-        public static User Create(string email, string senha)
-        {
-            var user = new User { Id = 1, Email = email, Senha = senha };
-            _user.Add(user);
-
-            return user;
+            _context = context;
         }
     }
 }
