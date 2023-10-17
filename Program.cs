@@ -1,12 +1,16 @@
 using DesafioBalta;
+using DesafioBalta.Context;
+using DesafioBalta.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllers();
 
 var key = Encoding.ASCII.GetBytes(Settings.Secret);
@@ -31,6 +35,10 @@ builder.Services.AddAuthentication(
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<ApiContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao"));
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
