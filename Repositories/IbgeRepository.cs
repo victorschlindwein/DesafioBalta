@@ -31,8 +31,8 @@ namespace DesafioBalta.Repositories
 
         public async Task<Ibge> GetByIdAsync(int id)
         {
-            var idIbge = await _context.Ibges.FirstOrDefaultAsync(x  => x.Id == id);
-            return idIbge;
+            var data = await _context.Ibges.FirstOrDefaultAsync(x  => x.Id == id);
+            return data;
         }
 
         public async Task<List<Ibge>> GetCityIbge(string city)
