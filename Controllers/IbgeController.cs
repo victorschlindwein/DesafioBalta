@@ -80,7 +80,7 @@ namespace DesafioBalta.Controllers
         {
             var data = await _ibgeService.Delete(id);
             if (!data)
-                return BadRequest();
+                return NotFound(new { message = "Id inexistente na base de dados "});
 
             return Ok(new { message = "Operação realizada com sucesso" });
         }
