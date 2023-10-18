@@ -1,11 +1,14 @@
 {
   "dependencies": {
+    "apis1": {
+      "type": "apis"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "ConexaoPadrao",
       "dynamicId": null
     },
-    "apis1": {
+    "apis2": {
       "type": "apis"
     },
     "identityapp1": {
