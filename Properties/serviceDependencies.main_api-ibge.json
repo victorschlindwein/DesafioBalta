@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "serviceConnectorResourceId": "",
+      "secretStore": "AzureAppSettings",
+      "type": "mssql.onprem",
+      "connectionId": "ConexaoPadrao",
+      "dynamicId": null
+    },
+    "apis2": {
+      "apiEndpoint": "https://desafiobaltaapi.azure-api.net/api-ibge",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/DesafioBaltaApi/apis/DesafioBalta",
+      "type": "apis.azure"
+    },
+    "identityapp1": {
+      "type": "identityapp.default",
+      "dynamicId": null
+    }
+  }
+}
