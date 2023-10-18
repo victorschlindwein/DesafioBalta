@@ -31,6 +31,14 @@ namespace DesafioBalta.Repositories
         {
             var databaseUser = await _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email) && x.Password.Equals(user.Password));
 
+            if (databaseUser == null)
+            {
+                user.Email = null;
+                user.Password = null;
+                user.AcessToken = null;
+                return user;
+            }
+
             var token = TokenService.GenerateToken(databaseUser);
             databaseUser.AcessToken = token;
 
