@@ -1,6 +1,7 @@
 using DesafioBalta;
 using DesafioBalta.Context;
-using DesafioBalta.Models;
+using DesafioBalta.Repositories;
+using DesafioBalta.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddControllers();
 
 var key = Encoding.ASCII.GetBytes(Settings.Secret);

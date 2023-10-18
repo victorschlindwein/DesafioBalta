@@ -1,8 +1,6 @@
 ﻿using DesafioBalta.Models;
-using DesafioBalta.Repositories;
 using DesafioBalta.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace DesafioBalta.Controllers
 {

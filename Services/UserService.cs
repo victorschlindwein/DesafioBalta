@@ -1,45 +1,28 @@
-﻿using DesafioBalta.Context;
-using DesafioBalta.Models;
+﻿using DesafioBalta.Models;
+using DesafioBalta.Repositories;
 using DesafioBalta.Services;
-using Microsoft.EntityFrameworkCore;
 
 public class UserService : IUserService
 {
-    private readonly ApiContext _context;
+    private readonly IUserRepository _userRepository;
 
-    public UserService(ApiContext context)
-    { _context = context; }
+    public UserService(IUserRepository userRepository)
+    {
+        _userRepository = userRepository;
+    }
 
     public async Task<User> CreateAsync(User user)
-    {
-        await _context.Users.AddAsync(user);
-        await _context.SaveChangesAsync();
-
-        var token = TokenService.GenerateToken(user);
-
-        user.AcessToken = token;
-
-        return user;
+    {     
+       return await _userRepository.CreateAsync(user);
     }
 
     public async Task<User> LoginUserAsync(User user)
     {
-        var databaseUser = await _context.Users.FirstOrDefaultAsync(x => x.Email.Equals(user.Email) && x.Password.Equals(user.Password));
-        
-        var token = TokenService.GenerateToken(databaseUser);
-        databaseUser.AcessToken = token;
-
-        return databaseUser;
+       return await _userRepository.LoginUserAsync(user);
     }
 
     public async Task<List<User>> GetAllAsync()
     {
-        var users = await _context.Users.ToListAsync();
-            foreach (var user in users)
-            {
-                var token = TokenService.GenerateToken(user);
-                user.AcessToken = token;
-            }
-        return users;
+        return await _userRepository.GetAllAsync();
     }
 }
