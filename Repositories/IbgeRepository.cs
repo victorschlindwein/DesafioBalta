@@ -29,7 +29,7 @@ namespace DesafioBalta.Repositories
             return ibges;
         }
 
-        public async Task<Ibge> GetIdIbge(int id)
+        public async Task<Ibge> GetByIdAsync(int id)
         {
             var idIbge = await _context.Ibges.FirstOrDefaultAsync(x  => x.Id == id);
             return idIbge;
@@ -45,6 +45,18 @@ namespace DesafioBalta.Repositories
         {
             var stateIbgeList = await _context.Ibges.Where(i => i.State == state).ToListAsync();
             return stateIbgeList;
+        }
+
+        public async Task<bool> Delete(int id)
+        {
+            var data = await _context.Ibges.FirstOrDefaultAsync(x => x.Id == id);
+            if (data == null)
+                return false;
+
+            _context.Ibges.Remove(data);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

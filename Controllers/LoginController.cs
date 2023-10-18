@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DesafioBalta.Controllers
 {
     [ApiController]
-    [Route("v1")]
+    [Route("user")]
     public class LoginController : ControllerBase
     {
         private readonly IUserService _userService;
