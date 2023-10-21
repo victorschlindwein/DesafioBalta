@@ -2,10 +2,9 @@
 using DesafioBalta.Models;
 using DesafioBalta.Services;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace DesafioBalta.Repositories 
-{ 
+namespace DesafioBalta.Repositories
+{
     public class UserRepository : IUserRepository
     {
         private readonly ApiContext _context;

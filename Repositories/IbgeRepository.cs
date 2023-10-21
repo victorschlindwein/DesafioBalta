@@ -1,8 +1,6 @@
 ﻿using DesafioBalta.Context;
 using DesafioBalta.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace DesafioBalta.Repositories
 {
@@ -29,7 +27,7 @@ namespace DesafioBalta.Repositories
 
         public async Task<Ibge> GetByIdAsync(int id, CancellationToken cancellationToken)
         {
-            var data = await _context.Ibges.FirstOrDefaultAsync(x  => x.Id == id, cancellationToken);
+            var data = await _context.Ibges.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
             return data;
         }
 
@@ -54,7 +52,7 @@ namespace DesafioBalta.Repositories
 
             data.City = ibge.City;
             data.State = ibge.State;
-                   
+
             _context.Update(data);
             await _context.SaveChangesAsync();
 

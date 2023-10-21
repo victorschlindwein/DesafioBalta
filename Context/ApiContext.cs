@@ -1,8 +1,9 @@
 ﻿using DesafioBalta.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DesafioBalta.Context { 
-	public class ApiContext : DbContext
+namespace DesafioBalta.Context
+{
+    public class ApiContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
@@ -19,7 +20,7 @@ namespace DesafioBalta.Context {
             var connectionString = _configuration.GetConnectionString("ConexaoPadrao");
             optionsBuilder.UseSqlServer(connectionString);
         }
-       
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
