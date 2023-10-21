@@ -1,7 +1,5 @@
-﻿using System.CodeDom.Compiler;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesafioBalta.Models
 {
@@ -13,7 +11,7 @@ namespace DesafioBalta.Models
         public required string Email { get; set; }
 
         [PasswordPropertyText]
-        public required string Password {  get; set; }
+        public required string Password { get; set; }
 
         public string AcessToken { get; set; }
     }

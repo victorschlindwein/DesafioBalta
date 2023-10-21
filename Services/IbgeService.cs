@@ -1,11 +1,10 @@
 ﻿using DesafioBalta.Models;
 using DesafioBalta.Repositories;
-using System.ComponentModel;
 
 namespace DesafioBalta.Services
 {
     public class IbgeService : IIbgeService
-    { 
+    {
         private readonly IIbgeRepository _ibgeRepository;
 
         public IbgeService(IIbgeRepository ibgeRepository)
@@ -26,7 +25,7 @@ namespace DesafioBalta.Services
         public async Task<List<Ibge>> GetCityIbge(string city, CancellationToken cancellationToken)
             => await _ibgeRepository.GetCityIbge(city, cancellationToken);
 
-        public async Task<Ibge> UpdateIbge(int id, Ibge ibge) 
+        public async Task<Ibge> UpdateIbge(int id, Ibge ibge)
             => await _ibgeRepository.UpdateIbge(id, ibge);
 
         public async Task<bool> Delete(int id)

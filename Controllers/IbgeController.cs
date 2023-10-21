@@ -3,7 +3,6 @@ using DesafioBalta.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using System.Threading;
 
 namespace DesafioBalta.Controllers
 {
@@ -94,7 +93,7 @@ namespace DesafioBalta.Controllers
         {
             var data = await _ibgeService.Delete(id);
             if (!data)
-                return NotFound(new { message = "Id inexistente na base de dados "});
+                return NotFound(new { message = "Id inexistente na base de dados " });
 
             return Ok(new { message = "Delete realizado com sucesso" });
         }

@@ -4,11 +4,8 @@ using DesafioBalta.Repositories;
 using DesafioBalta.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
