@@ -30,18 +30,19 @@ namespace DesafioBalta.Controllers
             return Ok(data);
         }
 
+        //[HttpGet]
+        //[Authorize]
+        //[Route("GetAll")]
+        //public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
+        //{
+        //    var data = await _ibgeService.GetAllIbgeAsync(cancellationToken);
+        //    if (data == null)
+        //        return NotFound(new { message = "Nenhum dado encontrado" });
+
+        //    return Ok(data);
+        //}
+
         [HttpGet]
-        [Route("GetAll")]
-        public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
-        {
-            var data = await _ibgeService.GetAllIbgeAsync(cancellationToken);
-            if (data == null)
-                return NotFound(new { message = "Nenhum dado encontrado" });
-
-            return Ok(data);
-        }
-
-        [HttpPost]
         [Route("GetById/{id}")]
         public async Task<IActionResult> GetById(int id, CancellationToken cancellationToken)
         {
@@ -52,8 +53,8 @@ namespace DesafioBalta.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
-        [Route("GetByCity")]
+        [HttpGet]
+        [Route("GetByCity/{city}")]
         public async Task<IActionResult> GetByCity(string city, CancellationToken cancellationToken)
         {
             var data = await _ibgeService.GetCityIbge(city, cancellationToken);
@@ -63,8 +64,8 @@ namespace DesafioBalta.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
-        [Route("GetByState")]
+        [HttpGet]
+        [Route("GetByState/{state}")]
         public async Task<IActionResult> GetByState(string state, CancellationToken cancellationToken)
         {
             var data = await _ibgeService.GetStateIbge(state, cancellationToken);
@@ -75,6 +76,7 @@ namespace DesafioBalta.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         [Route("update/{id}")]
         public async Task<IActionResult> UpdateIbge(int id, Ibge ibge)
         {

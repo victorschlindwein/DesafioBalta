@@ -36,13 +36,13 @@ namespace DesafioBalta.Controllers
             return Ok(databaseUser);
         }
 
-        [HttpGet]
-        [Route("getAllUsers")]
-        public async Task<IActionResult> GetAllUsers()
-        {
-            var users = await _userService.GetAllAsync();
+        //[HttpGet]
+        //[Route("getAllUsers")]
+        //public async Task<IActionResult> GetAllUsers()
+        //{
+        //    var users = await _userService.GetAllAsync();
 
-            return Ok(users);
-        }
+        //    return Ok(users);
+        //}
     }
 }
