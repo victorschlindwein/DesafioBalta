@@ -37,3 +37,8 @@ Esse projeto tem como objetivo disponibilizar o acesso à dados públicos do IBGE 
 
 ### Login
 	Recebe um objeto com email e senha existentes e retorna os dados do usuário com o token.
+
+# Desenvolvedores
+[@jefersonquaiato](https://github.com/jefersonquaiato), 
+[@teixeiralex](https://github.com/teixeiralex) e
+[@victorschlindwein](https://github.com/victorschlindwein)  
