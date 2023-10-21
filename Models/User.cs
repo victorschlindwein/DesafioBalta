@@ -15,6 +15,6 @@ namespace DesafioBalta.Models
         [PasswordPropertyText]
         public required string Password {  get; set; }
 
-        public string? AcessToken { get; set; }
+        public string AcessToken { get; set; }
     }
 }

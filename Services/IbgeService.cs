@@ -9,33 +9,25 @@ namespace DesafioBalta.Services
         private readonly IIbgeRepository _ibgeRepository;
 
         public IbgeService(IIbgeRepository ibgeRepository)
-        {
-            _ibgeRepository = ibgeRepository;
-        }
+            => _ibgeRepository = ibgeRepository;
 
         public async Task<Ibge> CreateIbgeAsync(Ibge ibge)
-        {
-            return await _ibgeRepository.CreateIbgeAsync(ibge);
-        }
+            => await _ibgeRepository.CreateIbgeAsync(ibge);
 
-        public async Task<List<Ibge>> GetAllIbgeAsync()
-        {
-            return await _ibgeRepository.GetAllIbgeAsync();
-        }
+        public async Task<List<Ibge>> GetAllIbgeAsync(CancellationToken cancellationToken)
+            => await _ibgeRepository.GetAllIbgeAsync(cancellationToken);
 
-        public async Task<Ibge> GetByIdAsync(int id)
-        {
-            return await _ibgeRepository.GetByIdAsync(id);
-        }
-        public async Task<List<Ibge>> GetStateIbge(string state)
-        {
-            return await _ibgeRepository.GetStateIbge(state);
-        }
+        public async Task<Ibge> GetByIdAsync(int id, CancellationToken cancellationToken)
+            => await _ibgeRepository.GetByIdAsync(id, cancellationToken);
 
-        public async Task<List<Ibge>> GetCityIbge(string city)
-        {
-            return await _ibgeRepository.GetCityIbge(city);
-        }
+        public async Task<List<Ibge>> GetStateIbge(string state, CancellationToken cancellationToken)
+            => await _ibgeRepository.GetStateIbge(state, cancellationToken);
+
+        public async Task<List<Ibge>> GetCityIbge(string city, CancellationToken cancellationToken)
+            => await _ibgeRepository.GetCityIbge(city, cancellationToken);
+
+        public async Task<Ibge> UpdateIbge(int id, Ibge ibge) 
+            => await _ibgeRepository.UpdateIbge(id, ibge);
 
         public async Task<bool> Delete(int id)
         {
